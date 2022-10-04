@@ -1,86 +1,58 @@
-import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
+import { useState } from 'react'
+import type { NextPage } from 'next'
 
-const Home: NextPage = () => {
+const Index: NextPage = (): JSX.Element => {
+  const [username, setUsername] = useState<string>('')
+  const [messages, setMessages] = useState<string[]>([])
+
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-2">
+    <>
       <Head>
-        <title>Create Next App</title>
+        <title>Sample Chat App with Laravel Pusher</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
-          </a>
-        </h1>
-
-        <p className="mt-3 text-2xl">
-          Get started by editing{' '}
-          <code className="rounded-md bg-gray-100 p-3 font-mono text-lg">
-            pages/index.tsx
-          </code>
-        </p>
-
-        <div className="mt-6 flex max-w-4xl flex-wrap items-center justify-around sm:w-full">
-          <a
-            href="https://nextjs.org/docs"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and its API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Learn &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Learn about Next.js in an interactive course with quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Examples &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Discover and deploy boilerplate example Next.js projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Deploy &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+      <main className="flex flex-col items-center justify-center overflow-hidden bg-gray-200 text-center">
+        <div className="mx-auto flex min-h-screen w-full max-w-6xl flex-1 flex-col rounded-3xl bg-slate-100 py-3 px-5">
+          <div className="flex flex-col">
+            <label htmlFor="username" className="text-left">
+              username
+            </label>
+            <input
+              type="text"
+              id="username"
+              placeholder="Username"
+              className="w-full border border-gray-300 py-2 px-4"
+            />
+          </div>
+          <div className="flex flex-1 flex-col justify-start overflow-y-auto bg-blue-50 p-3 text-left">
+            <div className="flex gap-4">
+              <div>
+                <strong className="font-semibold">Username</strong>
+              </div>
+              <div>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad excepturi repellendus
+                deleniti ut iste, veritatis sunt at dignissimos molestias magnam praesentium iure
+                esse aliquid incidunt pariatur quas beatae. Doloremque, perferendis?
+              </div>
+            </div>
+          </div>
+          <form className="mt-auto flex flex-col">
+            <label htmlFor="username" className="text-left">
+              Message
+            </label>
+            <input
+              type="text"
+              id="username"
+              className="w-full border border-gray-300 py-2 px-4"
+              placeholder="Message"
+            />
+          </form>
         </div>
       </main>
-
-      <footer className="flex h-24 w-full items-center justify-center border-t">
-        <a
-          className="flex items-center justify-center gap-2"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-        </a>
-      </footer>
-    </div>
+    </>
   )
 }
 
-export default Home
+export default Index
